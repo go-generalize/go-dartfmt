@@ -1,0 +1,10 @@
+name: entrypoint
+description: An entrypoint for dart format
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.10.0 <3.0.0'
+dependencies: 
+  dart_style: ^2.2.0
+  js: ^0.6.3
