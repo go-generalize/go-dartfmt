@@ -25,7 +25,7 @@ func runFormat(t *testing.T, formatter dartfmt.Formatter, dir string) {
 	}
 	expected := string(expectedBytes)
 
-	actual, err := dartfmt.FormatDart(string(input))
+	actual, err := formatter(string(input))
 
 	if err != nil {
 		t.Fatal(err)
