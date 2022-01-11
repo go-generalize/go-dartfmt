@@ -11,7 +11,6 @@ type Formatter func(script string) (string, error)
 
 // Formatters are candidates for FormatDart
 var Formatters = []Formatter{
-	FormatDartWithFlutterCLI,
 	FormatDartWithDartCLI,
 	FormatDartWithDartfmtCLI,
 	FormatDartStandalone,
