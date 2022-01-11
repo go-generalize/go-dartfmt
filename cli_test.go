@@ -13,7 +13,3 @@ func TestFormatDartWithDartCLI(t *testing.T) {
 func TestFormatDartWithDartfmtCLI(t *testing.T) {
 	runFormat(t, dartfmt.FormatDartWithDartfmtCLI, "testdata/001")
 }
-
-func TestFormatDartWithFlutterCLI(t *testing.T) {
-	runFormat(t, dartfmt.FormatDartWithFlutterCLI, "testdata/001")
-}

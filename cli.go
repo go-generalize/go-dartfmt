@@ -51,14 +51,3 @@ func FormatDartWithDartfmtCLI(script string) (string, error) {
 
 	return formatted, nil
 }
-
-// FormatDartWithFlutterCLI formats a script with `flutter format`
-func FormatDartWithFlutterCLI(script string) (string, error) {
-	formatted, err := runCLI(script, "flutter", "format")
-
-	if err != nil {
-		return "", fmt.Errorf("formatting with `flutter format` failed: %w", err)
-	}
-
-	return formatted, nil
-}
