@@ -66,7 +66,22 @@ var pool = sync.Pool{
 }
 
 // FormatDartStandalone formats a script without dependencies on external commands
-func FormatDartStandalone(script string) (string, error) {
+func FormatDartStandalone(script string) (result string, err error) {
+	defer func() {
+		e := recover()
+
+		if e == nil {
+			return
+		}
+
+		if e, ok := e.(error); ok {
+			err = e
+			return
+		}
+
+		err = fmt.Errorf("%v", e)
+	}()
+
 	vm := pool.Get().(*goja.Runtime)
 	defer pool.Put(vm)
 
@@ -77,7 +92,7 @@ func FormatDartStandalone(script string) (string, error) {
 	}
 
 	var fn func(string) string
-	err := vm.ExportTo(dartFormat, &fn)
+	err = vm.ExportTo(dartFormat, &fn)
 	if err != nil {
 		return "", fmt.Errorf("failed to execute dart_style formatter: %w", err)
 	}
